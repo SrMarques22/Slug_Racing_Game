@@ -18,12 +18,13 @@ class Slug:
 
 def display_race(slug_list):
     for slug in slug_list:
-        print(emoji.emojize(f"{slug.name}: {' .' * slug.position}:snail:"))
+        print(emoji.emojize(f"{slug.name}: {' _' * slug.position}:snail:"))
 
 
 def move_slugs(slug_list):
     for slug in slug_list:
-        slug.position += slug.speed
+        #adicionamos um random abaixo, pois o valor só estava sendo atribuido 1 vez no inicio da corrida
+        slug.position+= random.randint(0,slug.speed)
     print('==' * 30)
 
 def check_finish_line(slug_list):
@@ -33,7 +34,7 @@ def check_finish_line(slug_list):
     return None
 
 def main():
-    print("Get ready for the slug race!")
+    print(emoji.emojize("Get ready for the slug race! :crossed_flags:"))
     slug_list = [Slug(name) for name in SLUG_NAMES]
     winner = None
     while not winner:
@@ -41,7 +42,7 @@ def main():
         move_slugs(slug_list)
         winner = check_finish_line(slug_list)
         time.sleep(1)
-    print(f"The winner is {winner.name}!")
+    print(emoji.emojize(f" :crossed_flags: :crossed_flags: :crossed_flags: The winner is {winner.name}  :crossed_flags: :crossed_flags: :crossed_flags:"))
 
 if __name__ == "__main__":
     main()
