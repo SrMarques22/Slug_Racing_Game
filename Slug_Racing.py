@@ -37,11 +37,13 @@ def check_finish_line(slug_list):
 
 
 def main():
-    try:
+    while True :
         aposta = input(f'Em qual lesma deseja apostar? \n{SLUG_NAMES[0]}\n{SLUG_NAMES[1]}\n{SLUG_NAMES[2]}\n{SLUG_NAMES[3]}\n{SLUG_NAMES[4]}\n-> ').title()
-    except Exception:
-        pass
-        print('Digite um código correto')
+        if aposta not in SLUG_NAMES:
+            print('Insira o nome correto da Lesma!')
+        else:
+            break
+
     try:
         val = int(input('Qual valor deseja apostar? R$ '))
     except Exception:
@@ -58,9 +60,11 @@ def main():
         time.sleep(2)
     if winner.name == aposta:
         print('Parabéns você venceu!')
+        print(f'Aposta realizada: {aposta}')
         print(f'Valor Apostado:  R${val}   |   Valor Recebido: R${(val*5)*90//100}')
     else:
-        print('você perdeu')
+        print('você perdeu !!!')
+        print(f'Aposta realizada: {aposta}')
         print(f'Valor Apostado:  R${val}   |   Valor Perdido: R${val}')
     print(emoji.emojize(f" :crossed_flags: :crossed_flags: :crossed_flags: The winner is {winner.name}  :crossed_flags: :crossed_flags: :crossed_flags:"))
 
